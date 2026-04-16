@@ -1,0 +1,220 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f5;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-card {
+    max-width: 420px;
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    border: 1px solid #e5e5e5;
+    padding: 28px;
+    overflow: hidden;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.priority-badge {
+    background-color: #fee2e2;
+    color: #e11d48;
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.status-badge {
+    background-color: #fef9c3;
+    color: #ca8a04;
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Title */
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #18181b;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+/* Description */
+.description {
+    color: #52525b;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+/* Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    accent-color: #328bf6;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    font-weight: 500;
+    color: #3f3f46;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.due-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    font-size: 15px;
+}
+
+.due-date {
+    color: #3f3f46;
+    font-weight: 500;
+}
+
+.time-remaining-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.time-remaining {
+    color: #10b981;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 6px 18px;
+    background-color: #ecfdf5;
+    margin-left: auto;
+}
+
+/* Tags */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 26px;
+}
+
+.tag {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 500;
+}
+
+.tag:nth-child(2) { background-color: #fee2e2; color: #b91c1c; }
+.tag:nth-child(3) { background-color: #f3e8ff; color: #6b21a8; }
+
+
+/* Buttons */
+.buttons-container {
+    display: flex;
+    gap: 4px;
+    align-content: end;
+    justify-content: flex-end;
+    margin-left: auto;
+    
+}
+
+
+.btn {
+    
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.edit-btn {
+    background-color: white;
+    border: 2px solid #cbd5e1;
+    color: #334155;
+}
+
+.edit-btn:hover {
+    border-color: #64748b;
+    background: #f3f4f6;
+}
+
+.delete-btn {
+    background-color: white;
+    border: 2px solid #fecaca;
+    color: #ef4444;
+}
+
+.delete-btn:hover {
+    border-color: #f87171;
+    background-color: #fecaca3f;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Focus styles for accessibility */
+.btn:focus,
+input[type="checkbox"]:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .todo-card {
+        padding: 14px;
+        border-radius: 12px;
+    }
+    
+    .title {
+        font-size: 22px;
+    }
+}

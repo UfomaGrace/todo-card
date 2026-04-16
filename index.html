@@ -1,12 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo Card</title>
-    <style></style>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <article data-testid="test-todo-card" class="todo-card">
+      <!-- Priority + Due date -->
+      <div class="header">
+        <span data-testid="test-todo-priority" class="priority-badge" aria-label="High priority"
+          >High</span
+        >
+        <div>
+          <time
+            id="test-todo-due-date"
+            data-testid="test-todo-due-date"
+            class="due-date"
+          >
+          <!-- Filled by JavaScript -->
+          </time>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h2 id="test-todo-title" data-testid="test-todo-title" class="title">
+        Frontend Wizard Todo Card
+      </h2>
+
+      <!-- Description -->
+      <p data-testid="test-todo-description" class="description">
+        Build a clean, testable Todo card component with all required
+        data-testid attributes, accessibility, and responsiveness.
+      </p>
+
+      <!-- Tags -->
+      <ul data-testid="test-todo-tags" class="tags-container" role="list">
+        <li data-testid="test-todo-tag-frontend" class="tag">#frontend</li>
+        <li data-testid="test-todo-tag-urgent" class="tag">#urgent</li>
+        <li data-testid="test-todo-tag-design" class="tag">#design</li>
+      </ul>
+
+      <!--Time remaining-->
+      <div class="time-remaining-container">
+        <!--Status-->
+        <span
+          id="test-todo-status"
+          data-testid="test-todo-status"
+          aria-label="Current status: In Progress"
+          class="status-badge"
+          >In Progress</span
+        >
+
+        <!--Time remaining-->
+        <span
+          id="test-todo-time-remaining"
+          data-testid="test-todo-time-remaining"
+          aria-live="polite"
+          class="time-remaining"
+        >
+        </span>
+      </div>
+
+        <!-- Checkbox -->
+        <div class="checkbox-container">
+          <input
+            type="checkbox"
+            id="complete-toggle"
+            data-testid="test-todo-complete-toggle"
+          />
+          <label for="complete-toggle" class="checkbox-label">
+            Mark as complete
+          </label>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons-container">
+          <button data-testid="test-todo-edit-button" class="btn edit-btn">
+            Edit
+          </button>
+          <button data-testid="test-todo-delete-button" class="btn delete-btn">
+            Delete
+          </button>
+        </div>
+    </article>
+    <script src="script.js"></script>
+  </body>
 </html>
