@@ -12,13 +12,13 @@
         <!-- ==================== VIEW MODE ==================== -->
         <div id="view-mode">
 
-            <!-- Header: Priority Indicator + Due Date -->
+            <!-- Header -->
             <div class="header">
                 <div class="priority-group">
-                    <span data-testid="test-todo-priority-indicator" class="priority-indicator"></span>
-                    <span data-testid="test-todo-priority" class="priority-badge">High</span>
+                    <span data-testid="test-todo-priority-indicator" class="priority-indicator">High</span>
+                    <span data-testid="test-todo-priority" class="priority-badge"></span>
                 </div>
-                <time id="test-todo-due-date" data-testid="test-todo-due-date" class="due-date"></time>
+                <time id="test-todo-due-date" data-testid="test-todo-due-date" class="due-date">Due April 18, 2026</time>
             </div>
 
             <!-- Title -->
@@ -26,22 +26,30 @@
 
             <!-- Collapsible Description -->
             <div class="description-wrapper">
-                <div id="test-todo-collapsible-section" data-testid="test-todo-collapsible-section" class="description">
+                <div id="test-todo-collapsible-section" 
+                     data-testid="test-todo-collapsible-section" 
+                     class="description">
                     <p id="test-todo-description" data-testid="test-todo-description"></p>
                 </div>
                 <button id="test-todo-expand-toggle" 
                         data-testid="test-todo-expand-toggle" 
                         class="expand-toggle"
-                        aria-expanded="false">
+                        aria-expanded="false"
+                        aria-controls="test-todo-collapsible-section">
                     Show more
                 </button>
             </div>
 
-            <!-- Status + Time Remaining -->
+            <!-- Status + Time + Overdue -->
             <div class="status-time-row">
                 <span id="test-todo-status" data-testid="test-todo-status" class="status-badge"></span>
-                <span id="test-todo-time-remaining" data-testid="test-todo-time-remaining" class="time-remaining"></span>
-                <span id="test-todo-overdue-indicator" data-testid="test-todo-overdue-indicator" class="overdue-indicator"></span>
+                <span id="test-todo-time-remaining" 
+                      data-testid="test-todo-time-remaining" 
+                      class="time-remaining"
+                      aria-live="polite"></span>
+                <span id="test-todo-overdue-indicator" 
+                      data-testid="test-todo-overdue-indicator" 
+                      class="overdue-indicator"></span>
             </div>
 
             <!-- Checkbox -->
@@ -52,7 +60,7 @@
 
             <!-- Status Control -->
             <div class="status-control-container">
-                <label for="status-control">Status:</label>
+                <label for="test-todo-status-control">Status</label>
                 <select id="test-todo-status-control" data-testid="test-todo-status-control">
                     <option value="Pending">Pending</option>
                     <option value="In Progress">In Progress</option>
@@ -61,11 +69,9 @@
             </div>
 
             <!-- Tags -->
-            <ul data-testid="test-todo-tags" class="tags-container" role="list">
-                <!-- Tags will be added by JS if needed -->
-            </ul>
+            <ul data-testid="test-todo-tags" class="tags-container" role="list"></ul>
 
-            <!-- Action Buttons -->
+            <!-- Buttons -->
             <div class="buttons-container">
                 <button data-testid="test-todo-edit-button" class="btn edit-btn">✏️ Edit</button>
                 <button data-testid="test-todo-delete-button" class="btn delete-btn">🗑️ Delete</button>
@@ -74,13 +80,11 @@
 
         <!-- ==================== EDIT MODE ==================== -->
         <div id="edit-mode" class="edit-mode" style="display: none;">
-
             <form id="test-todo-edit-form" data-testid="test-todo-edit-form">
-
                 <label for="test-todo-edit-title-input">Title</label>
                 <input type="text" 
                        id="test-todo-edit-title-input" 
-                       data-testid="test-todo-edit-title-input">
+                       data-testid="test-todo-edit-title-input" required>
 
                 <label for="test-todo-edit-description-input">Description</label>
                 <textarea id="test-todo-edit-description-input" 
@@ -103,7 +107,7 @@
                     <button type="button" 
                             id="test-todo-save-button" 
                             data-testid="test-todo-save-button"
-                            class="btn save-btn">Save</button>
+                            class="btn save-btn">Save Changes</button>
                     
                     <button type="button" 
                             id="test-todo-cancel-button" 

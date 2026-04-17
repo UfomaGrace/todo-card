@@ -24,11 +24,9 @@ body {
     border: 1px solid #f1f5f9;
     padding: 32px;
     overflow: hidden;
-    transition: all 0.3s ease;
 }
 
-/* ===================== VIEW MODE ===================== */
-
+/* VIEW MODE */
 .header {
     display: flex;
     justify-content: space-between;
@@ -43,10 +41,9 @@ body {
 }
 
 .priority-indicator {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    flex-shrink: 0;
 }
 
 .priority-low    { background-color: #4ade80; }
@@ -60,9 +57,9 @@ body {
     font-weight: 600;
 }
 
-.priority-low    { background-color: #ecfdf5; color: #166534; }
-.priority-medium { background-color: #fef9c3; color: #854d0e; }
-.priority-high   { background-color: #fee2e2; color: #991b1b; }
+.priority-low    { background: #ecfdf5; color: #166534; }
+.priority-medium { background: #fef9c3; color: #854d0e; }
+.priority-high   { background: #fee2e2; color: #991b1b; }
 
 .title {
     font-size: 26px;
@@ -73,8 +70,7 @@ body {
 }
 
 .description-wrapper {
-    margin-bottom: 20px;
-    position: relative;
+    margin-bottom: 24px;
 }
 
 .description {
@@ -82,7 +78,7 @@ body {
     font-size: 15.5px;
     line-height: 1.6;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.4s ease;
 }
 
 .expand-toggle {
@@ -92,16 +88,15 @@ body {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    padding: 4px 0;
-    margin-top: 8px;
+    padding: 6px 0;
 }
 
 .status-time-row {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 24px;
+    align-items: center;
 }
 
 .status-badge {
@@ -111,27 +106,27 @@ body {
     font-weight: 600;
 }
 
-.status-pending       { background-color: #e0f2fe; color: #0369a1; }
-.status-in-progress   { background-color: #fef9c3; color: #ca8a04; }
-.status-done          { background-color: #d1fae5; color: #15803d; }
+.status-pending       { background: #e0f2fe; color: #0369a1; }
+.status-in-progress   { background: #fef9c3; color: #ca8a04; }
+.status-done          { background: #d1fae5; color: #15803d; }
 
 .time-remaining {
     padding: 8px 20px;
     border-radius: 9999px;
     font-size: 14.5px;
     font-weight: 600;
-    background-color: #ecfdf5;
+    background: #ecfdf5;
     color: #10b981;
 }
 
 .time-remaining.completed {
-    background-color: #f1f5f9;
+    background: #f1f5f9;
     color: #64748b;
 }
 
 .overdue-indicator {
     padding: 6px 16px;
-    background-color: #fee2e2;
+    background: #fee2e2;
     color: #ef4444;
     border-radius: 9999px;
     font-size: 13px;
@@ -154,7 +149,6 @@ body {
     width: 26px;
     height: 26px;
     accent-color: #3b82f6;
-    cursor: pointer;
 }
 
 .checkbox-label {
@@ -162,10 +156,6 @@ body {
     color: #334155;
     cursor: pointer;
     font-weight: 500;
-}
-
-.status-control-container {
-    margin-bottom: 24px;
 }
 
 .status-control-container label {
@@ -181,7 +171,6 @@ body {
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     font-size: 15px;
-    background-color: white;
 }
 
 .tags-container {
@@ -216,10 +205,6 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
 }
 
 .edit-btn {
@@ -234,17 +219,12 @@ body {
     color: #ef4444;
 }
 
-.edit-btn:hover, .delete-btn:hover {
+.btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
-/* ===================== EDIT MODE ===================== */
-
-.edit-mode {
-    padding: 8px 0;
-}
-
+/* EDIT MODE */
 .edit-mode form {
     display: flex;
     flex-direction: column;
@@ -255,7 +235,6 @@ body {
     font-size: 14px;
     font-weight: 500;
     color: #475569;
-    margin-bottom: 4px;
 }
 
 .edit-mode input,
@@ -265,11 +244,10 @@ body {
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     font-size: 15px;
-    background-color: white;
 }
 
 .edit-mode textarea {
-    min-height: 120px;
+    min-height: 110px;
     resize: vertical;
 }
 
@@ -280,36 +258,32 @@ body {
 }
 
 .save-btn {
-    background-color: #3b82f6;
+    background: #3b82f6;
     color: white;
     border: none;
 }
 
 .cancel-btn {
-    background-color: white;
+    background: white;
     border: 2px solid #94a3b8;
     color: #475569;
 }
 
-/* Focus styles */
-input:focus, textarea:focus, select:focus, .btn:focus {
+/* Focus Styles */
+input:focus, textarea:focus, select:focus, button:focus {
     outline: 3px solid #60a5fa;
     outline-offset: 2px;
 }
 
+/* Done State */
+.title.done {
+    text-decoration: line-through;
+    color: #64748b;
+}
+
 /* Responsiveness */
 @media (max-width: 480px) {
-    .todo-card {
-        padding: 24px;
-        border-radius: 20px;
-    }
-    
-    .title {
-        font-size: 23px;
-    }
-    
-    .status-time-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    .todo-card { padding: 24px; border-radius: 20px; }
+    .title { font-size: 23px; }
+    .status-time-row { flex-direction: column; align-items: flex-start; }
 }
