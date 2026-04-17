@@ -1,4 +1,3 @@
-/* style.css */
 * {
     margin: 0;
     padding: 0;
@@ -6,14 +5,29 @@
 }
 
 body {
+    background-color: #f8fafc;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f5;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
 }
+
+.todo-card {
+    background-color: white;
+    max-width: 460px;
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 
+                0 8px 10px -6px rgb(0 0 0 / 0.1);
+    border: 1px solid #f1f5f9;
+    padding: 32px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* ===================== VIEW MODE ===================== */
 
 .header {
     display: flex;
@@ -22,151 +36,186 @@ body {
     margin-bottom: 20px;
 }
 
-.todo-card {
-    max-width: 420px;
-    width: 100%;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    border: 1px solid #e5e5e5;
-    padding: 28px;
-    overflow: hidden;
+.priority-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.priority-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
 }
+
+.priority-low    { background-color: #4ade80; }
+.priority-medium { background-color: #fbbf24; }
+.priority-high   { background-color: #f87171; }
 
 .priority-badge {
-    background-color: #fee2e2;
-    color: #e11d48;
     padding: 6px 18px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.status-badge {
-    background-color: #fef9c3;
-    color: #ca8a04;
-    padding: 6px 18px;
-    border-radius: 30px;
+    border-radius: 9999px;
     font-size: 14px;
     font-weight: 600;
 }
 
-/* Title */
+.priority-low    { background-color: #ecfdf5; color: #166534; }
+.priority-medium { background-color: #fef9c3; color: #854d0e; }
+.priority-high   { background-color: #fee2e2; color: #991b1b; }
+
 .title {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    color: #18181b;
-    margin-bottom: 12px;
+    color: #0f172a;
+    margin-bottom: 16px;
     line-height: 1.3;
 }
 
-/* Description */
-.description {
-    color: #52525b;
-    font-size: 15px;
-    line-height: 1.7;
-    margin-bottom: 8px;
+.description-wrapper {
+    margin-bottom: 20px;
+    position: relative;
 }
 
-/* Checkbox */
-.checkbox-container {
+.description {
+    color: #475569;
+    font-size: 15.5px;
+    line-height: 1.6;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.expand-toggle {
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 0;
+    margin-top: 8px;
+}
+
+.status-time-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-bottom: 24px;
 }
 
+.status-badge {
+    padding: 8px 20px;
+    border-radius: 9999px;
+    font-size: 14.5px;
+    font-weight: 600;
+}
+
+.status-pending       { background-color: #e0f2fe; color: #0369a1; }
+.status-in-progress   { background-color: #fef9c3; color: #ca8a04; }
+.status-done          { background-color: #d1fae5; color: #15803d; }
+
+.time-remaining {
+    padding: 8px 20px;
+    border-radius: 9999px;
+    font-size: 14.5px;
+    font-weight: 600;
+    background-color: #ecfdf5;
+    color: #10b981;
+}
+
+.time-remaining.completed {
+    background-color: #f1f5f9;
+    color: #64748b;
+}
+
+.overdue-indicator {
+    padding: 6px 16px;
+    background-color: #fee2e2;
+    color: #ef4444;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    display: none;
+}
+
+.overdue-indicator.show {
+    display: inline-block;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
 .checkbox-container input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
-    accent-color: #328bf6;
+    width: 26px;
+    height: 26px;
+    accent-color: #3b82f6;
     cursor: pointer;
 }
 
 .checkbox-label {
-    font-weight: 500;
-    color: #3f3f46;
+    font-size: 15.5px;
+    color: #334155;
     cursor: pointer;
-    font-size: 15px;
-}
-
-.due-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 28px;
-    font-size: 15px;
-}
-
-.due-date {
-    color: #3f3f46;
     font-weight: 500;
 }
 
-.time-remaining-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    align-items: center;
+.status-control-container {
+    margin-bottom: 24px;
 }
 
-.time-remaining {
-    color: #10b981;
-    font-weight: 600;
-    border-radius: 30px;
-    padding: 6px 18px;
-    background-color: #ecfdf5;
-    margin-left: auto;
+.status-control-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #64748b;
 }
 
-/* Tags */
+.status-control-container select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    background-color: white;
+}
+
 .tags-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 26px;
+    gap: 8px;
+    margin-bottom: 28px;
+    list-style: none;
 }
 
 .tag {
-    background-color: #e0f2fe;
-    color: #0369a1;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11.5px;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 13.5px;
     font-weight: 500;
 }
 
-.tag:nth-child(2) { background-color: #fee2e2; color: #b91c1c; }
-.tag:nth-child(3) { background-color: #f3e8ff; color: #6b21a8; }
+.tag-frontend { background: #dbeafe; color: #1e40af; }
+.tag-urgent   { background: #fee2e2; color: #e11d48; }
+.tag-design   { background: #f3e8ff; color: #7e22ce; }
 
-
-/* Buttons */
 .buttons-container {
     display: flex;
-    gap: 4px;
-    align-content: end;
-    justify-content: flex-end;
-    margin-left: auto;
-    
+    gap: 12px;
 }
 
-
 .btn {
-    
+    flex: 1;
     padding: 14px 20px;
-    border-radius: 8px;
+    border-radius: 16px;
+    font-size: 15px;
     font-weight: 600;
-    font-size: 14px;
     cursor: pointer;
     transition: all 0.2s ease;
-    border: 2px solid transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,47 +223,93 @@ ul {
 }
 
 .edit-btn {
-    background-color: white;
+    background: white;
     border: 2px solid #cbd5e1;
     color: #334155;
 }
 
-.edit-btn:hover {
-    border-color: #64748b;
-    background: #f3f4f6;
-}
-
 .delete-btn {
-    background-color: white;
+    background: white;
     border: 2px solid #fecaca;
     color: #ef4444;
 }
 
-.delete-btn:hover {
-    border-color: #f87171;
-    background-color: #fecaca3f;
-}
-
 .edit-btn:hover, .delete-btn:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
-/* Focus styles for accessibility */
-.btn:focus,
-input[type="checkbox"]:focus {
-    outline: 3px solid #3b82f6;
+/* ===================== EDIT MODE ===================== */
+
+.edit-mode {
+    padding: 8px 0;
+}
+
+.edit-mode form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.edit-mode label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 4px;
+}
+
+.edit-mode input,
+.edit-mode textarea,
+.edit-mode select {
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    background-color: white;
+}
+
+.edit-mode textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.save-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+}
+
+.cancel-btn {
+    background-color: white;
+    border: 2px solid #94a3b8;
+    color: #475569;
+}
+
+/* Focus styles */
+input:focus, textarea:focus, select:focus, .btn:focus {
+    outline: 3px solid #60a5fa;
     outline-offset: 2px;
 }
 
 /* Responsiveness */
 @media (max-width: 480px) {
     .todo-card {
-        padding: 14px;
-        border-radius: 12px;
+        padding: 24px;
+        border-radius: 20px;
     }
     
     .title {
-        font-size: 22px;
+        font-size: 23px;
+    }
+    
+    .status-time-row {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
